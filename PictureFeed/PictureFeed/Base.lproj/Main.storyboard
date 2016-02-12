@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,17 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EeF-KH-Bhh">
-                                <rect key="frame" x="180" y="180" width="240" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="Xta-gp-dql"/>
-                                </constraints>
+                                <rect key="frame" x="60" y="60" width="480" height="480"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EeF-KH-Bhh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JYL-gD-iBm"/>
-                            <constraint firstItem="EeF-KH-Bhh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="d0e-fK-dqB"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EeF-KH-Bhh" secondAttribute="bottom" constant="180" id="se0-8y-pvO"/>
+                            <constraint firstItem="EeF-KH-Bhh" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="4Ik-ZG-rYw"/>
+                            <constraint firstItem="EeF-KH-Bhh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9Y6-uc-siZ"/>
+                            <constraint firstItem="EeF-KH-Bhh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="L26-1l-5ri"/>
+                            <constraint firstItem="EeF-KH-Bhh" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="mMt-5C-uyx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xj5-1k-PAE">
