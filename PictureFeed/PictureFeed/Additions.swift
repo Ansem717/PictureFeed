@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIImage {
+    
     class func resize(image: UIImage, size: CGSize) -> UIImage { //MARK: Throw an error
         
         UIGraphicsBeginImageContext(size)
@@ -19,11 +20,14 @@ extension UIImage {
         
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    
 }
 
 extension NSURL {
+    
     class func imageURL() -> NSURL {
         guard let documentsDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else { fatalError() }
         return documentsDirectory
     }
+    
 }

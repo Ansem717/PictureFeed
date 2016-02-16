@@ -43,7 +43,11 @@
                                     <action selector="editImage:" destination="BYZ-38-t0r" id="fLa-EW-QCP"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="save" id="cvN-cO-JIY"/>
+                            <barButtonItem systemItem="save" id="cvN-cO-JIY">
+                                <connections>
+                                    <action selector="saveImage:" destination="BYZ-38-t0r" id="gzK-oU-kiH"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
