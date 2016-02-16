@@ -12,14 +12,17 @@ typealias FiltersCompletion = (theImage: UIImage?) -> ()
 
 class Filters {
     
-    // Hold On To Original Image
+    var image: UIImage?
+    
+    init(image: UIImage? = nil) {
+        self.image = image
+    }
     
     private class func filter(name: String, image: UIImage, completion: FiltersCompletion) {
         
-        /* MARK: Useful for many filters:
-        let filterNames = CIFilter.filterNamesInCategory(kCICategoryBuiltIn) as [String]
-        print(filterNames)
-        */
+        // MARK: Useful for many filters:
+//        let filterNames = CIFilter.filterNamesInCategories(nil) as [String]
+//        print(filterNames)
         
         NSOperationQueue().addOperationWithBlock { () -> Void in
             

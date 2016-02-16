@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage {
     
-    class func resize(image: UIImage, size: CGSize) -> UIImage { //MARK: Throw an error
+    class func resize(image: UIImage, size: CGSize) -> UIImage { 
         
         UIGraphicsBeginImageContext(size)
         let rect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
@@ -27,7 +27,7 @@ extension NSURL {
     
     class func imageURL() -> NSURL {
         guard let documentsDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first else { fatalError() }
-        return documentsDirectory
+        return documentsDirectory.URLByAppendingPathComponent("image")
     }
     
 }
