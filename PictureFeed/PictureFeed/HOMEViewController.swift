@@ -10,7 +10,7 @@ import UIKit
 
 class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     
     lazy var UIIPC = UIImagePickerController()
@@ -22,13 +22,13 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType)
-{
+    {
         self.UIIPC.delegate = self
         self.UIIPC.sourceType = sourceType
         self.presentViewController(self.UIIPC, animated: true, completion: nil)
@@ -48,7 +48,7 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         actionSheet.addAction(cancel)
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }
-
+    
     @IBAction func addImage(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             presentActionSheet()
