@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -31,25 +32,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xj5-1k-PAE">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="1Ae-EI-OGF">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="vo7-No-Q7O">
-                                <rect key="frame" x="505" y="7" width="75" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="ADD">
-                                            <attributes>
-                                                <font key="NSFont" size="20" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="02s-L6-OTL">
                                 <connections>
-                                    <action selector="addImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cqW-tK-5T1"/>
+                                    <action selector="addImages:" destination="BYZ-38-t0r" id="tyE-Xp-SAV"/>
                                 </connections>
-                            </button>
-                        </barButtonItem>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="dKM-Np-jVE">
+                                <connections>
+                                    <action selector="editImage:" destination="BYZ-38-t0r" id="fLa-EW-QCP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="save" id="cvN-cO-JIY"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="EeF-KH-Bhh" id="CkM-wH-v3C"/>
@@ -62,6 +57,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ds4-9q-ZH2">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRC-qb-bBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ls8-ge-rih" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RQz-7N-MNY">
@@ -73,7 +69,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2FB-JC-XLC"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bRC-qb-bBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="412" y="277"/>
         </scene>

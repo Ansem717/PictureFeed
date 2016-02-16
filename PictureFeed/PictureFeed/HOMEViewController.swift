@@ -49,12 +49,22 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.presentViewController(actionSheet, animated: true, completion: nil)
     }
     
-    @IBAction func addImage(sender: AnyObject) {
+    
+    //MARK: BUTTON FUNCTIONS
+    @IBAction func addImages(sender: UIBarButtonItem) {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             presentActionSheet()
         } else {
             self.presentImagePicker(.PhotoLibrary)
         }
+    }
+    
+    @IBAction func editImage(sender: UIBarButtonItem) {
+        //Edit
+    }
+    
+    @IBAction func saveImage(sender: UIBarButtonItem) {
+        //Save
     }
 }
 
