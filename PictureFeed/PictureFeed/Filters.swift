@@ -20,10 +20,6 @@ class Filters {
     
     private class func filter(name: String, image: UIImage, completion: FiltersCompletion) {
         
-        // MARK: Useful for many filters:
-//        let filterNames = CIFilter.filterNamesInCategories(nil) as [String]
-//        print(filterNames)
-        
         NSOperationQueue().addOperationWithBlock { () -> Void in
             
             guard let filter = CIFilter(name: name) else { fatalError("Filters Class - Filter Failed - Line 19 - Check Spelling, perhaps?") }
@@ -47,4 +43,23 @@ class Filters {
     class func monochrome(image: UIImage, completion: FiltersCompletion) {
         self.filter("CIPhotoEffectMono", image: image, completion: completion)
     }
+    class func crystalize(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CICrystallize", image: image, completion: completion)
+    }
+    class func sepia(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CISepiaTone", image: image, completion: completion)
+    }
+    class func bumpDistortion(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CIBumpDistortion", image: image, completion: completion)
+    }
+    class func colorPosterize(image: UIImage, completion: FiltersCompletion) {
+        self.filter("CIColorPosterize", image: image, completion: completion)
+    }
+    
 }
+
+
+
+
+
+

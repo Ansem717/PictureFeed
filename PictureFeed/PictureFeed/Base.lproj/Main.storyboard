@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,38 +18,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="pVE-7c-jCN">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" red="1" green="0.061523099774187906" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EeF-KH-Bhh">
                                 <rect key="frame" x="60" y="60" width="480" height="480"/>
+                                <color key="backgroundColor" white="0.84599785105935454" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EeF-KH-Bhh" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="4Ik-ZG-rYw"/>
                             <constraint firstItem="EeF-KH-Bhh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9Y6-uc-siZ"/>
+                            <constraint firstItem="pVE-7c-jCN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="FnI-Hu-VrV"/>
                             <constraint firstItem="EeF-KH-Bhh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="L26-1l-5ri"/>
+                            <constraint firstItem="pVE-7c-jCN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SJV-zV-CrD"/>
                             <constraint firstItem="EeF-KH-Bhh" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="mMt-5C-uyx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xj5-1k-PAE">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="02s-L6-OTL">
-                                <connections>
-                                    <action selector="addImages:" destination="BYZ-38-t0r" id="tyE-Xp-SAV"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="edit" id="dKM-Np-jVE">
-                                <connections>
-                                    <action selector="editImage:" destination="BYZ-38-t0r" id="fLa-EW-QCP"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="save" id="cvN-cO-JIY">
-                                <connections>
-                                    <action selector="saveImage:" destination="BYZ-38-t0r" id="gzK-oU-kiH"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <toolbarItems>
+                        <barButtonItem systemItem="save" id="cvN-cO-JIY">
+                            <connections>
+                                <action selector="saveImage:" destination="BYZ-38-t0r" id="gzK-oU-kiH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Jx6-K3-BNB"/>
+                        <barButtonItem systemItem="add" id="02s-L6-OTL">
+                            <connections>
+                                <action selector="addImages:" destination="BYZ-38-t0r" id="tyE-Xp-SAV"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="YcP-jp-qIx"/>
+                        <barButtonItem systemItem="edit" id="dKM-Np-jVE">
+                            <connections>
+                                <action selector="editImage:" destination="BYZ-38-t0r" id="fLa-EW-QCP"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="xj5-1k-PAE"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="pVE-7c-jCN" id="JKf-F1-q0P"/>
                         <outlet property="imageView" destination="EeF-KH-Bhh" id="CkM-wH-v3C"/>
                     </connections>
                 </viewController>
@@ -61,13 +69,17 @@
         <!--Navigation Controller-->
         <scene sceneID="ds4-9q-ZH2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ls8-ge-rih" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Ls8-ge-rih" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RQz-7N-MNY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="X4B-Ja-IqO">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2FB-JC-XLC"/>
                     </connections>
