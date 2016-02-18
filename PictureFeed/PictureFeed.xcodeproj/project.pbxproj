@@ -17,6 +17,8 @@
 		E979185F1C738F4D00B6EF0B /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979185E1C738F4D00B6EF0B /* Filters.swift */; };
 		E97918611C73A13A00B6EF0B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97918601C73A13A00B6EF0B /* API.swift */; };
 		E97918631C73A27800B6EF0B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97918621C73A27800B6EF0B /* Post.swift */; };
+		E9EB390C1C756A4B0004C446 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EB390B1C756A4B0004C446 /* GalleryViewController.swift */; };
+		E9EB390E1C75855C0004C446 /* GalleryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EB390D1C75855C0004C446 /* GalleryViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		E979185E1C738F4D00B6EF0B /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		E97918601C73A13A00B6EF0B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E97918621C73A27800B6EF0B /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = ../Post.swift; sourceTree = "<group>"; };
+		E9EB390B1C756A4B0004C446 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		E9EB390D1C75855C0004C446 /* GalleryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				E9746C881C6E4042004DFBC3 /* HOMEViewController.swift */,
+				E9EB390D1C75855C0004C446 /* GalleryViewCell.swift */,
+				E9EB390B1C756A4B0004C446 /* GalleryViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -192,7 +198,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E979185D1C738B6F00B6EF0B /* Additions.swift in Sources */,
+				E9EB390C1C756A4B0004C446 /* GalleryViewController.swift in Sources */,
 				E979185F1C738F4D00B6EF0B /* Filters.swift in Sources */,
+				E9EB390E1C75855C0004C446 /* GalleryViewCell.swift in Sources */,
 				E9746C891C6E4042004DFBC3 /* HOMEViewController.swift in Sources */,
 				E97918631C73A27800B6EF0B /* Post.swift in Sources */,
 				E9746C871C6E4042004DFBC3 /* AppDelegate.swift in Sources */,

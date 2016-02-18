@@ -13,10 +13,9 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var sideMenuLeadingConstraint: NSLayoutConstraint!
     
-    var originalImage = Filters()
+    var originalImage: UIImage? = nil
     
     lazy var UIIPC = UIImagePickerController()
     
@@ -93,8 +92,8 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //MARK: Possible to refractor with loop, maybe?
         popUp.addAction(UIAlertAction(title: "Black and White", style: .Default) { (action) -> Void in
             self.activityIndicator.startAnimating()
-            self.imageView.alpha = 0.5
-            Filters.monochrome(image, completion: { (theImage) -> () in
+            self.imageView.alpha = 0.2
+            Filters.shared.monochrome(image, completion: { (theImage) -> () in
                 self.imageView.image = theImage
                 self.activityIndicator.stopAnimating()
                 self.imageView.alpha = 1.0
@@ -102,8 +101,8 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         })
         popUp.addAction(UIAlertAction(title: "Crystalize", style: .Default) { (action) -> Void in
             self.activityIndicator.startAnimating()
-            self.imageView.alpha = 0.5
-            Filters.crystalize(image, completion: { (theImage) -> () in
+            self.imageView.alpha = 0.2
+            Filters.shared.crystalize(image, completion: { (theImage) -> () in
                 self.imageView.image = theImage
                 self.activityIndicator.stopAnimating()
                 self.imageView.alpha = 1.0
@@ -111,8 +110,8 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         })
         popUp.addAction(UIAlertAction(title: "Sepia", style: .Default) { (action) -> Void in
             self.activityIndicator.startAnimating()
-            self.imageView.alpha = 0.5
-            Filters.sepia(image, completion: { (theImage) -> () in
+            self.imageView.alpha = 0.2
+            Filters.shared.sepia(image, completion: { (theImage) -> () in
                 self.imageView.image = theImage
                 self.activityIndicator.stopAnimating()
                 self.imageView.alpha = 1.0
@@ -120,8 +119,8 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         })
         popUp.addAction(UIAlertAction(title: "Bump Distortion", style: .Default) { (action) -> Void in
             self.activityIndicator.startAnimating()
-            self.imageView.alpha = 0.5
-            Filters.bumpDistortion(image, completion: { (theImage) -> () in
+            self.imageView.alpha = 0.2
+            Filters.shared.bumpDistortion(image, completion: { (theImage) -> () in
                 self.imageView.image = theImage
                 self.activityIndicator.stopAnimating()
                 self.imageView.alpha = 1.0
@@ -129,8 +128,8 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         })
         popUp.addAction(UIAlertAction(title: "Color Posterize", style: .Default) { (action) -> Void in
             self.activityIndicator.startAnimating()
-            self.imageView.alpha = 0.5
-            Filters.colorPosterize(image, completion: { (theImage) -> () in
+            self.imageView.alpha = 0.2
+            Filters.shared.colorPosterize(image, completion: { (theImage) -> () in
                 self.imageView.image = theImage
                 self.activityIndicator.stopAnimating()
                 self.imageView.alpha = 1.0
@@ -138,7 +137,7 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         })
         
         popUp.addAction(UIAlertAction(title: "Reset", style: .Destructive) { (action) -> Void in
-            self.imageView.image = self.originalImage.image
+            self.imageView.image = self.originalImage
         })
         
         popUp.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
@@ -159,7 +158,7 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             return
         }
         
-        if image == originalImage.image {
+        if image == originalImage {
             let popUp = UIAlertController(title: "Hold on!", message: "Are you sure you wish to save an identical image?", preferredStyle: .Alert)
             
             popUp.addAction(UIAlertAction(title: "Continue", style: .Default) { (action) -> Void in
@@ -198,8 +197,9 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             popUp.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
             
             self.presentViewController(popUp, animated: true, completion: nil)
+        } else {
+            print("Line 201 HOMEViewController ERROR - \(error)")
         }
-        print("Line 201 HOMEViewController ERROR - \(error)")
     }
     
     func toggleSideBar() {
@@ -221,7 +221,7 @@ extension HOMEViewController { //MARK: Delegate Functions
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.imageView.image = image
-        originalImage = Filters(image: image)
+        originalImage = image
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
