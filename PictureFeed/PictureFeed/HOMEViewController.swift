@@ -14,12 +14,16 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var sideMenuLeadingConstraint: NSLayoutConstraint!
+    
     var originalImage = Filters()
     
     lazy var UIIPC = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideMenuLeadingConstraint.constant = 60.0
+        self.view.layoutIfNeeded()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -54,16 +58,25 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     //MARK: BUTTON FUNCTIONS
-    @IBAction func addImages(sender: UIBarButtonItem) {
-        
+    
+    
+    @IBAction func menuButton(sender: AnyObject) {
+        toggleSideBar()
+    }
+    
+    @IBAction func addImageSidebarButton(sender: UIButton) {
+        toggleSideBar()
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             presentActionSheet()
         } else {
             self.presentImagePicker(.PhotoLibrary)
         }
+        
     }
     
-    @IBAction func editImage(sender: UIBarButtonItem) {
+    
+    @IBAction func editImageSidebarButton(sender: AnyObject) {
+        toggleSideBar()
         
         guard let image = self.imageView.image else {
             let popUp = UIAlertController(title: "Hold on!", message: "You have not selected an image!", preferredStyle: .Alert)
@@ -131,10 +144,11 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         popUp.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         
         self.presentViewController(popUp, animated: true, completion: nil)
-        
     }
     
-    @IBAction func saveImage(sender: UIBarButtonItem) {
+    
+    @IBAction func saveImageSidebarButton(sender: AnyObject) {
+        toggleSideBar()
         
         guard let image = self.imageView.image else {
             let popUp = UIAlertController(title: "Hold on!", message: "You have not selected an image!", preferredStyle: .Alert)
@@ -185,8 +199,21 @@ class HOMEViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             self.presentViewController(popUp, animated: true, completion: nil)
         }
-        
         print("Line 201 HOMEViewController ERROR - \(error)")
+    }
+    
+    func toggleSideBar() {
+        if sideMenuLeadingConstraint.constant == 60.0 {
+            sideMenuLeadingConstraint.constant = -45.0
+            UIView.animateWithDuration(0.5) {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            sideMenuLeadingConstraint.constant = 60.0
+            UIView.animateWithDuration(0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }
 
