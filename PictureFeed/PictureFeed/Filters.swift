@@ -12,27 +12,30 @@ typealias FiltersCompletion = (theImage: UIImage?) -> ()
 
 class Filters {
     
-    var image: UIImage?
+    static let shared = Filters()
     
-    init(image: UIImage? = nil) {
-        self.image = image
+    let context: CIContext
+    
+    private init() {
+        let options = [kCIContextWorkingColorSpace : NSNull()]
+        let EAGContext = EAGLContext(API: .OpenGLES2)
+        self.context = CIContext(EAGLContext: EAGContext, options: options)
     }
     
-    private class func filter(name: String, image: UIImage, completion: FiltersCompletion) {
+
+    
+    private func filter(name: String, image: UIImage, completion: FiltersCompletion) {
         
         NSOperationQueue().addOperationWithBlock { () -> Void in
             
             guard let filter = CIFilter(name: name) else { fatalError("Filters Class - Filter Failed - Line 19 - Check Spelling, perhaps?") }
             filter.setValue(CIImage(image: image), forKey: kCIInputImageKey)
             
-            // GPU Context
-            let options = [kCIContextWorkingColorSpace : NSNull()]
-            let EAGContext = EAGLContext(API: .OpenGLES2)
-            let GPUContext = CIContext(EAGLContext: EAGContext, options: options)
+            
             
             // Get final image
             guard let outputImage = filter.outputImage else { fatalError("Filters Class - No Image - Line 29") }
-            let CGImage = GPUContext.createCGImage(outputImage, fromRect: outputImage.extent)
+            let CGImage = self.context.createCGImage(outputImage, fromRect: outputImage.extent)
             
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                 completion(theImage: UIImage(CGImage: CGImage))
@@ -40,19 +43,19 @@ class Filters {
         }
     }
     
-    class func monochrome(image: UIImage, completion: FiltersCompletion) {
+    func monochrome(image: UIImage, completion: FiltersCompletion) {
         self.filter("CIPhotoEffectMono", image: image, completion: completion)
     }
-    class func crystalize(image: UIImage, completion: FiltersCompletion) {
+    func crystalize(image: UIImage, completion: FiltersCompletion) {
         self.filter("CICrystallize", image: image, completion: completion)
     }
-    class func sepia(image: UIImage, completion: FiltersCompletion) {
+    func sepia(image: UIImage, completion: FiltersCompletion) {
         self.filter("CISepiaTone", image: image, completion: completion)
     }
-    class func bumpDistortion(image: UIImage, completion: FiltersCompletion) {
+    func bumpDistortion(image: UIImage, completion: FiltersCompletion) {
         self.filter("CIBumpDistortion", image: image, completion: completion)
     }
-    class func colorPosterize(image: UIImage, completion: FiltersCompletion) {
+    func colorPosterize(image: UIImage, completion: FiltersCompletion) {
         self.filter("CIColorPosterize", image: image, completion: completion)
     }
     
